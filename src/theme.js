@@ -3,9 +3,9 @@ import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#42a5f5",
-      light: "#8BC7F9",
-      dark: "#1976d2",
+      main: "#252525",
+      light: "#464646",
+      dark: "#000000",
       contrastText: "#fff",
     },
     secondary: {
@@ -22,7 +22,9 @@ const theme = createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
-        outlined: {},
+        contained: {
+          textTransform: "initial",
+        },
       },
     },
   },
@@ -32,39 +34,33 @@ const theme = createTheme({
       fontSize: "5rem", //48px
       lineHeight: "1.3",
       fontWeight: 400, //Regular
-      color: "#fff",
-      letterSpacing: "0px",
-      fontFamily: '"Bree Serif", "Arial", sans-serif',
+      color: "#252525",
     },
     h2: {
       fontSize: "4rem", //40px
       fontWeight: 400, //Regular
-      color: "#fff",
-      fontFamily: '"Bree Serif", "Arial", sans-serif',
+      color: "#252525",
     },
     h3: {
       fontSize: "3rem", //32px
       fontWeight: 400, //Regular
-      color: "#8F8F8F",
-      fontFamily: '"Bree Serif", "Arial", sans-serif',
+      color: "#252525",
     },
     h4: {
       fontSize: "1.5rem", //20px
       fontWeight: 400, //Regular
       color: "#8F8F8F",
-      fontFamily: '"Bree Serif", "Arial", sans-serif',
     },
     body1: {
       fontSize: "1rem", //16px
-      fontFamily: '"Noto Sans", "Arial", sans-serif',
       fontWeight: 400, //Regular
       color: "#252525",
     },
     button: {
-      fontSize: "2rem", //24px
+      fontSize: "1rem", //24px
       fontWeight: 400, //Regular
-      color: "#fff",
-      fontFamily: '"Bree Serif", "Arial", sans-serif',
+      color: "#252525",
+      textTransform: "none"
     },
   },
 });
