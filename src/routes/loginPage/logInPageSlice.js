@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const logInAuth = createAsyncThunk(
-  "controlPanel/logInAuth",
+  "logInPage/logInAuth",
   async ({ usernameValue, passwordValue }) => {
     console.log("usernameValue", usernameValue);
     console.log("passwordValue", passwordValue);
@@ -18,6 +18,24 @@ export const logInAuth = createAsyncThunk(
   }
 );
 
+export const getUserProfile = createAsyncThunk(
+  "logInPage/getUserProfile",
+  async (data) => {
+    const response = await fetch(
+      `https://dummyjson.com/auth/users/${data.id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Content-Type": "application/json",
+          Authorization: `${data.token}`,
+        },
+      }
+    );
+    const userProfile = await response.json();
+    return userProfile;
+  }
+);
+
 export const logInPageSlice = createSlice({
   name: "logIn",
   initialState: {
@@ -25,6 +43,9 @@ export const logInPageSlice = createSlice({
     isLogedIn: false,
     isLogingIn: false,
     logInHasError: false,
+    userProfile: {},
+    isLoadingProfile: false,
+    loadingProfileHasError: false,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -45,6 +66,20 @@ export const logInPageSlice = createSlice({
         state.isLogingIn = false;
         state.loadingResultsHasError = true;
         state.diceResults = {};
+      })
+      .addCase(getUserProfile.pending, (state) => {
+        state.isLoadingProfile = true;
+        state.loadingProfileHasError = false;
+      })
+      .addCase(getUserProfile.fulfilled, (state, action) => {
+        state.isLoadingProfile = false;
+        state.loadingProfileHasError = false;
+        state.userProfile = action.payload;
+      })
+      .addCase(getUserProfile.rejected, (state) => {
+        state.isLoadingProfile = false;
+        state.loadingProfileHasError = true;
+        state.userProfile = {};
       });
   },
 });

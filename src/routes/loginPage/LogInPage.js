@@ -8,7 +8,12 @@ import {
   InputLabel,
   Typography,
 } from "@mui/material";
-import { getIsLogedIn, logInAuth } from "./logInPageSlice";
+import {
+  getIsLogedIn,
+  getUserInfo,
+  getUserProfile,
+  logInAuth,
+} from "./logInPageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
@@ -16,6 +21,7 @@ function LogInPage() {
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const isLogedIn = useSelector(getIsLogedIn);
+  const userInfo = useSelector(getUserInfo);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -26,9 +32,10 @@ function LogInPage() {
 
   useEffect(() => {
     if (isLogedIn === true) {
+      dispatch(getUserProfile(userInfo));
       navigate("/Dashboard");
     }
-  }, [isLogedIn, navigate]);
+  }, [userInfo, isLogedIn, navigate, dispatch]);
 
   return (
     <div className="LogInPage_Container">
