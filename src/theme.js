@@ -30,26 +30,37 @@ const theme = createTheme({
   },
   typography: {
     fontSize: 16,
+    textTransform: "capitalize",
     h1: {
       fontSize: "5rem", //48px
       lineHeight: "1.3",
       fontWeight: 400, //Regular
       color: "#252525",
+      textTransform: "capitalize",
     },
     h2: {
       fontSize: "4rem", //40px
       fontWeight: 400, //Regular
       color: "#252525",
+      textTransform: "capitalize",
     },
     h3: {
       fontSize: "3rem", //32px
       fontWeight: 400, //Regular
       color: "#252525",
+      textTransform: "capitalize",
     },
     h4: {
       fontSize: "1.5rem", //20px
       fontWeight: 400, //Regular
-      color: "#8F8F8F",
+      color: "#252525",
+      textTransform: "capitalize",
+    },
+    h5: {
+      fontSize: "1rem", //16px
+      fontWeight: 400, //Regular
+      color: "#252525",
+      textTransform: "capitalize",
     },
     body1: {
       fontSize: "1rem", //16px
