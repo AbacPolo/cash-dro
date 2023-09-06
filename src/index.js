@@ -8,6 +8,7 @@ import "./index.css";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import DashBoard from "./routes/dashboard/DashBoard";
 import LogInPage from "./routes/loginPage/LogInPage";
+import CategoryPage from "./routes/categoryPage/CategoryPage";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -21,6 +22,7 @@ root.render(
         <Route exact path="/" element={<App />}>
           <Route exact path="/" element={<LogInPage />} />
           <Route exact path="/Dashboard" element={<DashBoard />} />
+          <Route exact path="/Dashboard/:category" element={<CategoryPage />} />
         </Route>
       </Routes>
     </Provider>
