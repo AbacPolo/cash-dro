@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProfilePage.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo, getUserProfileInfo } from "../loginPage/logInPageSlice";
+import { getIsLogedIn, getUserInfo, getUserProfileInfo } from "../loginPage/logInPageSlice";
 import {
   Button,
   FormControl,
@@ -9,10 +9,12 @@ import {
   IconButton,
   Input,
   InputLabel,
+  OutlinedInput,
   Typography,
 } from "@mui/material";
 import { Edit } from "@mui/icons-material";
 import { updateProfileInfo } from "./profilePageSlice";
+import { useNavigate } from "react-router";
 
 function ProfilePage() {
   const userProfile = useSelector(getUserProfileInfo);
@@ -26,9 +28,14 @@ function ProfilePage() {
   const [phone, setPhone] = useState(userProfile.phone);
   const dispatch = useDispatch();
 
-  console.log("userProfile", userProfile);
-  console.log("userInfo", userInfo);
-
+  const isLogedIn = useSelector(getIsLogedIn);
+  const navigateTo = useNavigate();
+  useEffect(() => {
+    if (isLogedIn === false) {
+      navigateTo("/");
+    }
+  }, [ isLogedIn, navigateTo]);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setEditProfile(false);
@@ -62,68 +69,80 @@ function ProfilePage() {
           </FormLabel>
           <FormControl fullWidth>
             <InputLabel htmlFor="input-username">Username</InputLabel>
-            <Input
+            <OutlinedInput
               id="input-username"
               aria-describedby="username"
               value={username}
               onChange={(e) => setUsername(e.currentTarget.value)}
               required
               disabled={!editProfile}
+              label="Username"
+              color="button"
             />
           </FormControl>
           <FormControl fullWidth>
             <InputLabel htmlFor="input-firstName">FirstName</InputLabel>
-            <Input
+            <OutlinedInput
               id="input-firstName"
               aria-describedby="firstName"
               value={firstName}
               onChange={(e) => setFirstName(e.currentTarget.value)}
               required
               disabled={!editProfile}
+              label="FirstName"
+              color="button"
             />
           </FormControl>
           <FormControl fullWidth>
             <InputLabel htmlFor="input-lastName">LastName</InputLabel>
-            <Input
+            <OutlinedInput
               id="input-lastName"
               aria-describedby="lastName"
               value={lastName}
               onChange={(e) => setLastName(e.currentTarget.value)}
               required
               disabled={!editProfile}
+              label="LastName"
+              color="button"
             />
           </FormControl>
           <FormControl fullWidth>
             <InputLabel htmlFor="input-birthDate">BirthDate</InputLabel>
-            <Input
+            <OutlinedInput
               id="input-birthDate"
               aria-describedby="birthDate"
               value={birthDate}
               onChange={(e) => setBirthDate(e.currentTarget.value)}
               required
               disabled={!editProfile}
+              label="BirthDate"
+              color="button"
             />
           </FormControl>
           <FormControl fullWidth>
             <InputLabel htmlFor="input-email">Email</InputLabel>
-            <Input
+            <OutlinedInput
               id="input-email"
               aria-describedby="email"
               value={email}
               onChange={(e) => setEmail(e.currentTarget.value)}
               required
               disabled={!editProfile}
+              label="Email"
+              color="button"
             />
           </FormControl>
           <FormControl fullWidth>
             <InputLabel htmlFor="input-phone">Phone</InputLabel>
-            <Input
+            <OutlinedInput
               id="input-phone"
               aria-describedby="phone"
               value={phone}
               onChange={(e) => setPhone(e.currentTarget.value)}
               required
               disabled={!editProfile}
+              label="Phone"
+              color="button"
             />
           </FormControl>
           <Button

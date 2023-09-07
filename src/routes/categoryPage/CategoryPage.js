@@ -7,7 +7,7 @@ import {
   getProducts,
   getProductsInCategory,
 } from "./categoryPageSlice";
-import { getUserInfo } from "../loginPage/logInPageSlice";
+import { getIsLogedIn, getUserInfo } from "../loginPage/logInPageSlice";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { Typography } from "@mui/material";
@@ -20,6 +20,13 @@ function CategoryPage() {
   const products = useSelector(getProducts);
   // const loadingProducts = useSelector(getIsLoadingProducts);
   const navigateTo = useNavigate();
+  const isLogedIn = useSelector(getIsLogedIn);
+  
+  useEffect(() => {
+    if (isLogedIn === false) {
+      navigateTo("/");
+    }
+  }, [ isLogedIn, navigateTo]);
 
   useEffect(() => {
     if (currentCategory !== category) {

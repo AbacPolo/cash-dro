@@ -24,7 +24,7 @@ function DashBoard() {
     if (isLogedIn === false) {
       navigateTo("/");
     }
-  }, [userInfo, isLogedIn, navigateTo, dispatch]);
+  }, [isLogedIn, navigateTo]);
 
   useEffect(() => {
     if (!allCategoriesLoaded && isLogedIn === true) {

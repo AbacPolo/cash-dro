@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ProductPage.css";
 import { useSelector } from "react-redux";
 import { getProducts } from "../categoryPage/categoryPageSlice";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { Typography } from "@mui/material";
 import { Sell, Star, StarBorder } from "@mui/icons-material";
+import { getIsLogedIn } from "../loginPage/logInPageSlice";
 
 function ProductPage() {
   const products = useSelector(getProducts);
   const { state } = useLocation();
   const { id } = state;
+  const isLogedIn = useSelector(getIsLogedIn);
+  const navigateTo = useNavigate();
   const selectedProduct = products.filter((product) => product.id === id)[0];
   const discountedPrice = (
     (selectedProduct.price * (100 - selectedProduct.discountPercentage)) /
@@ -19,6 +22,12 @@ function ProductPage() {
   const starsArray = new Array(5)
     .fill(0)
     .fill(1, 0, Math.floor(selectedProduct.rating));
+
+    useEffect(() => {
+      if (isLogedIn === false) {
+        navigateTo("/");
+      }
+    }, [ isLogedIn, navigateTo]);
 
   return (
     <div className="ProductPage_Container">
