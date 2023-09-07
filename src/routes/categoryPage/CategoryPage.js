@@ -32,7 +32,7 @@ function CategoryPage() {
   const handleRowClick = (params, event, details) => {
     console.log(params);
     const productId = params.id;
-    navigateTo(`/Dashboard/${category}/${productId}`);
+    navigateTo(`/Dashboard/${category}/${productId}`,{ state: { id: productId } });
   };
 
   const columns = [

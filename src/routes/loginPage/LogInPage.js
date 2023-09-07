@@ -53,6 +53,7 @@ function LogInPage() {
               aria-describedby="Username"
               value={usernameValue}
               onChange={(e) => setUsernameValue(e.currentTarget.value)}
+              required
             />
           </FormControl>
           <FormControl fullWidth>
@@ -62,6 +63,7 @@ function LogInPage() {
               aria-describedby="Password"
               value={passwordValue}
               onChange={(e) => setPasswordValue(e.currentTarget.value)}
+              required
             />
           </FormControl>
           <Button

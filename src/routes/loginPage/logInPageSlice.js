@@ -88,5 +88,4 @@ export const getUserInfo = (state) => state.logIn.userInfo;
 export const getIsLogedIn = (state) => state.logIn.isLogedIn;
 export const getIsLogingIn = (state) => state.logIn.isLogingIn;
 export const getLogInHasError = (state) => state.logIn.logInHasError;
-export const {} = logInPageSlice.actions;
 export default logInPageSlice.reducer;
