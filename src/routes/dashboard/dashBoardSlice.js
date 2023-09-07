@@ -3,13 +3,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const getCategories = createAsyncThunk(
   "dashBoardPage/getCategories",
   async (data) => {
-    console.log(data)
     const response = await fetch(
       "https://dummyjson.com/auth/products/categories",
       {
         method: "GET",
         headers: {
-          "Content-Content-Type": "application/json",
+          "Content-Type": "application/json",
           Authorization: `${data.token}`,
         },
       }

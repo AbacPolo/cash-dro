@@ -26,7 +26,7 @@ export const getUserProfile = createAsyncThunk(
       {
         method: "GET",
         headers: {
-          "Content-Content-Type": "application/json",
+          "Content-Type": "application/json",
           Authorization: `${data.token}`,
         },
       }
@@ -88,4 +88,5 @@ export const getUserInfo = (state) => state.logIn.userInfo;
 export const getIsLogedIn = (state) => state.logIn.isLogedIn;
 export const getIsLogingIn = (state) => state.logIn.isLogingIn;
 export const getLogInHasError = (state) => state.logIn.logInHasError;
+export const getUserProfileInfo = (state) => state.logIn.userProfile;
 export default logInPageSlice.reducer;
