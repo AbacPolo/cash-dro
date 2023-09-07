@@ -46,48 +46,48 @@ function CategoryPage() {
     {
       field: "thumbnail",
       headerName: "Thumbnail",
-      headerAlign: "center",
       type: "image",
       filterable: false,
       sortable: false,
-      minWidth: "100",
       renderCell: (params) => <img width="100" src={params.value} alt="logo" />,
       align: "center",
       disableColumnMenu: true,
+      minWidth: 100,
+      flex: 0.5
     },
     {
       field: "title",
       headerName: "Product",
-      headerAlign: "center",
       filterable: true,
-      minWidth: "200",
+      minWidth: 200,
+      flex: 1
     },
     {
       field: "brand",
       headerName: "Brand",
-      headerAlign: "center",
       filterable: true,
-      minWidth: "200",
+      minWidth: 150,
+      flex: 1
     },
     {
       field: "price",
       headerName: "Price",
-      headerAlign: "center",
       type: "number",
       filterable: true,
-      minWidth: "20",
       align: "center",
       disableColumnMenu: true,
+      minWidth: 100,
+      flex: 0.5
     },
     {
       field: "rating",
       headerName: "Rating",
-      headerAlign: "center",
       type: "number",
       filterable: true,
-      minWidth: "20",
       align: "center",
       disableColumnMenu: true,
+      minWidth: 100,
+      flex: 0.5
     },
   ];
 
@@ -96,7 +96,7 @@ function CategoryPage() {
     thumbnail: product.thumbnail,
     title: product.title,
     brand: product.brand,
-    price: product.price,
+    price: `${product.price}€`,
     rating: product.rating,
   }));
 
