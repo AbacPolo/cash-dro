@@ -32,7 +32,9 @@ function Header() {
 
   const handleClose = (category) => {
     setAnchorEl(null);
-    navigateTo(`/Dashboard/${category}`);
+    if (typeof category === "string") {
+      navigateTo(`/Dashboard/${category}`);
+    }
   };
 
   const handleLogoClick = () => {
@@ -80,7 +82,9 @@ function Header() {
           {allCategoriesLoaded &&
             allCategories.map((category, index) => (
               <MenuItem onClick={() => handleClose(category)} key={index}>
-                <Typography variant="h5">{category.replaceAll('-',' ')}</Typography>
+                <Typography variant="h5">
+                  {category.replaceAll("-", " ")}
+                </Typography>
               </MenuItem>
             ))}
         </Menu>
