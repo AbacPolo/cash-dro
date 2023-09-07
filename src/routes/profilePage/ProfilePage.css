@@ -1,8 +1,5 @@
 .ProfilePage_Container {
-    width: 100%;
     height: calc(100% - 56px);
-    margin: 0;
-    box-sizing: border-box;
     overflow-y: auto;
   }
   

@@ -3,7 +3,7 @@ import "./ProductPage.css";
 import { useSelector } from "react-redux";
 import { getProducts } from "../categoryPage/categoryPageSlice";
 import { useLocation, useNavigate } from "react-router";
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { Sell, Star, StarBorder } from "@mui/icons-material";
 import { getIsLogedIn } from "../loginPage/logInPageSlice";
 
@@ -30,7 +30,7 @@ function ProductPage() {
     }, [ isLogedIn, navigateTo]);
 
   return (
-    <div className="ProductPage_Container">
+    <Container className="ProductPage_Container">
       <div className="ProductPage_Wrapper">
         <div className="title_Container">
           <Typography variant="h2">{selectedProduct.title}</Typography>
@@ -82,7 +82,7 @@ function ProductPage() {
           <Typography variant="body1">{selectedProduct.description}</Typography>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 

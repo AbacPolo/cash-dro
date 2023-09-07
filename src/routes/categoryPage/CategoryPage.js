@@ -10,7 +10,7 @@ import {
 import { getIsLogedIn, getUserInfo } from "../loginPage/logInPageSlice";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 
 function CategoryPage() {
   const category = useLocation().pathname.replaceAll("/Categories/", "");
@@ -21,12 +21,12 @@ function CategoryPage() {
   // const loadingProducts = useSelector(getIsLoadingProducts);
   const navigateTo = useNavigate();
   const isLogedIn = useSelector(getIsLogedIn);
-  
+
   useEffect(() => {
     if (isLogedIn === false) {
       navigateTo("/");
     }
-  }, [ isLogedIn, navigateTo]);
+  }, [isLogedIn, navigateTo]);
 
   useEffect(() => {
     if (currentCategory !== category) {
@@ -101,7 +101,7 @@ function CategoryPage() {
   }));
 
   return (
-    <div className="CategoryPage_Container">
+    <Container className="CategoryPage_Container">
       <div className="CategoryPage_Wrapper">
         <Typography variant="h2">{category.replaceAll("-", " ")}</Typography>
         <Box sx={{ height: "fit-content", width: "100%" }}>
@@ -114,7 +114,7 @@ function CategoryPage() {
           />
         </Box>
       </div>
-    </div>
+    </Container>
   );
 }
 

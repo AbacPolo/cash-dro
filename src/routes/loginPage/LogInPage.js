@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./LogInPage.css";
 import {
   Button,
+  Container,
   FormControl,
   FormLabel,
   IconButton,
@@ -48,16 +49,14 @@ function LogInPage() {
   };
 
   return (
-    <div className="LogInPage_Container">
+    <Container maxWidth="sm" className="LogInPage_Container">
       <div className="LogInPage_Wrapper">
         <form onSubmit={handleSubmit} className="Form_Content">
           <FormLabel>
             <Typography variant="h2">Log In</Typography>
           </FormLabel>
           <FormControl fullWidth>
-            <InputLabel htmlFor="input-Username">
-              Username
-            </InputLabel>
+            <InputLabel htmlFor="input-Username">Username</InputLabel>
             <OutlinedInput
               id="input-Username"
               aria-describedby="Username"
@@ -76,7 +75,7 @@ function LogInPage() {
               value={passwordValue}
               onChange={(e) => setPasswordValue(e.currentTarget.value)}
               required
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
@@ -88,7 +87,7 @@ function LogInPage() {
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
-                }
+              }
               label="Password"
               color="button"
             />
@@ -103,7 +102,7 @@ function LogInPage() {
           </Button>
         </form>
       </div>
-    </div>
+    </Container>
   );
 }
 

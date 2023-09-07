@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getIsLogedIn, getUserInfo, getUserProfileInfo } from "../loginPage/logInPageSlice";
 import {
   Button,
+  Container,
   FormControl,
   FormLabel,
   IconButton,
@@ -52,7 +53,7 @@ function ProfilePage() {
   };
 
   return (
-    <div className="ProfilePage_Container">
+    <Container className="ProfilePage_Container">
       <div className="ProfilePage_Wrapper">
         <form
           onSubmit={handleSubmit}
@@ -156,7 +157,7 @@ function ProfilePage() {
           </Button>
         </form>
       </div>
-    </div>
+    </Container>
   );
 }
 
