@@ -45,7 +45,7 @@ function Header() {
 
   const handleProfile = () => {
     navigateTo(`/Profile/${username}`);
-  }
+  };
 
   return (
     <AppBar
@@ -101,7 +101,7 @@ function Header() {
           {allCategoriesLoaded &&
             allCategories.map((category, index) => (
               <MenuItem onClick={() => handleClose(category)} key={index}>
-                <Typography variant="h5">
+                <Typography variant="h5" sx={{ textTransform: "uppercase" }}>
                   {category.replaceAll("-", " ")}
                 </Typography>
               </MenuItem>

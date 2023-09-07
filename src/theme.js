@@ -25,9 +25,9 @@ const theme = createTheme({
         contained: {
           textTransform: "initial",
           ":hover": {
-            transform: 'Scale(1.05)',
-            transition: 'all 200ms',
-          }
+            transform: "Scale(1.05)",
+            transition: "all 200ms",
+          },
         },
       },
     },
@@ -38,14 +38,14 @@ const theme = createTheme({
       fontFamily: '"Oswald","Arial",sans-serif',
       fontSize: "6rem", //48px
       lineHeight: "1.3",
-      fontWeight: 700, //Regular
+      fontWeight: 700, //Bold
       color: "#fff",
       textTransform: "capitalize",
     },
     h2: {
       fontFamily: '"Oswald","Arial",sans-serif',
       fontSize: "4rem", //40px
-      fontWeight: 500, //Regular
+      fontWeight: 500, //Medium
       color: "#9b9b9b",
       textTransform: "capitalize",
     },
@@ -53,7 +53,7 @@ const theme = createTheme({
       fontFamily: '"Oswald","Arial",sans-serif',
       fontSize: "3rem", //32px
       lineHeight: "1.3",
-      fontWeight: 500, //Regular
+      fontWeight: 500, //Medium
       color: "#252525",
       textTransform: "capitalize",
     },
@@ -67,7 +67,7 @@ const theme = createTheme({
     h5: {
       fontFamily: '"Oswald","Arial",sans-serif',
       fontSize: "1rem", //16px
-      fontWeight: 500, //Regular
+      fontWeight: 300, //Light
       color: "#252525",
       textTransform: "capitalize",
     },
@@ -82,7 +82,7 @@ const theme = createTheme({
       fontSize: "1rem", //24px
       fontWeight: 400, //Regular
       color: "#252525",
-      textTransform: "none"
+      textTransform: "none",
     },
   },
 });
