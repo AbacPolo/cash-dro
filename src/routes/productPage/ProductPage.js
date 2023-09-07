@@ -52,9 +52,9 @@ function ProductPage() {
             {/* <Typography variant="h4">{selectedProduct.rating}</Typography> */}
             {starsArray.map((star, index) => {
               if (star) {
-                return <Star color="button" key={index}/>;
+                return <Star color="button" key={index} />;
               } else {
-                return <StarBorder color="button" key={index}/>;
+                return <StarBorder color="button" key={index} />;
               }
             })}
           </div>
@@ -69,6 +69,7 @@ function ProductPage() {
           className="product_Image"
         />
         <div className="description_Container">
+          <Typography variant="h4">Characteristics</Typography>
           <Typography variant="body1">{selectedProduct.description}</Typography>
         </div>
       </div>
