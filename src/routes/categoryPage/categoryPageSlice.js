@@ -2,11 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getProductsInCategory = createAsyncThunk(
   "categoryPage/getProducts",
-  async ({userInfo, location}) => {
+  async ({userInfo, category}) => {
     console.log(userInfo)
-    console.log(location)
+    console.log(category)
      const response = await fetch(
-       `https://dummyjson.com/products/category/${location}`,
+       `https://dummyjson.com/products/category/${category}`,
        {
          method: "GET",
          headers: {

@@ -39,7 +39,7 @@ export const dashBoardSlice = createSlice({
         state.isLoadingCategories = false;
         state.loadingCategoriesHasError = false;
         state.allCategoriesLoaded = true;
-        state.allCategories = action.payload.map((category) => category.replaceAll('-',' '));
+        state.allCategories = action.payload;
       })
       .addCase(getCategories.rejected, (state) => {
         state.isLoadingCategories = false;

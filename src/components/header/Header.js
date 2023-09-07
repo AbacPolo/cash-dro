@@ -80,7 +80,7 @@ function Header() {
           {allCategoriesLoaded &&
             allCategories.map((category, index) => (
               <MenuItem onClick={() => handleClose(category)} key={index}>
-                <Typography variant="h5">{category}</Typography>
+                <Typography variant="h5">{category.replaceAll('-',' ')}</Typography>
               </MenuItem>
             ))}
         </Menu>

@@ -23,6 +23,7 @@ root.render(
           <Route exact path="/" element={<LogInPage />} />
           <Route exact path="/Dashboard" element={<DashBoard />} />
           <Route exact path="/Dashboard/:category" element={<CategoryPage />} />
+          <Route exact path="/Dashboard/:category/:productId" element={<CategoryPage />} />
         </Route>
       </Routes>
     </Provider>

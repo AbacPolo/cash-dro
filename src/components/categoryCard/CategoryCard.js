@@ -18,7 +18,7 @@ function CategoryCard({ category }) {
       onClick={() => handleClick(category)}
     >
       <div className="CategoryCard_Wrapper">
-        <Typography variant="h4">{category}</Typography>
+        <Typography variant="h4">{category.replaceAll('-',' ')}</Typography>
       </div>
     </Button>
   );
