@@ -3,20 +3,46 @@
   height: calc(100% - 56px);
   margin: 0;
   box-sizing: border-box;
-  padding-left: 16px;
-  padding-right: 16px;
+
   overflow-y: auto;
 }
 
-.DashBoard_Wrapper{
+.DashBoard_Wrapper {
   width: 100%;
   height: fit-content;
   margin: 0;
   box-sizing: border-box;
   padding-top: 16px;
   padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
+}
+
+.banner_Container {
+  width: 100%;
+  max-height: 30%;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner_Title {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0,0.5);
+}
+
+.banner_Image {
+  width: 100%;
 }

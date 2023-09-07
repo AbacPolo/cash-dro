@@ -31,10 +31,10 @@ const theme = createTheme({
   typography: {
     fontSize: 16,
     h1: {
-      fontSize: "5rem", //48px
+      fontSize: "6rem", //48px
       lineHeight: "1.3",
-      fontWeight: 400, //Regular
-      color: "#252525",
+      fontWeight: 700, //Regular
+      color: "#fff",
       textTransform: "capitalize",
     },
     h2: {

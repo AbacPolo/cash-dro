@@ -9,6 +9,8 @@ import {
 import { getIsLogedIn, getUserInfo } from "../loginPage/logInPageSlice";
 import { useNavigate } from "react-router";
 import CategoryCard from "../../components/categoryCard/CategoryCard";
+import bannerImage from "../../images/pexels-ksenia-chernaya.jpg";
+import { Typography } from "@mui/material";
 
 function DashBoard() {
   const dispatch = useDispatch();
@@ -32,12 +34,24 @@ function DashBoard() {
 
   return (
     <div className="DashBoard_Container">
+      <div className="banner_Container">
+        <img src={bannerImage} alt="banner_Image" className="banner_Image"/>
+        <Typography
+          variant="h1"
+          className="banner_Title"
+          position={"absolute"}
+          top={0}
+          left={0}
+        >
+          CATEGORIES
+        </Typography>
+      </div>
+
       <div className="DashBoard_Wrapper">
-        {
-          allCategoriesLoaded && allCategories.map((category, index) => (
-            <CategoryCard key={index} category={category}/>
-          ))
-        }
+        {allCategoriesLoaded &&
+          allCategories.map((category, index) => (
+            <CategoryCard key={index} category={category} />
+          ))}
       </div>
     </div>
   );
