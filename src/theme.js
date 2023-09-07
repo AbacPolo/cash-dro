@@ -24,6 +24,10 @@ const theme = createTheme({
       styleOverrides: {
         contained: {
           textTransform: "initial",
+          ":hover": {
+            transform: 'Scale(1.05)',
+            transition: 'all 200ms',
+          }
         },
       },
     },
@@ -31,6 +35,7 @@ const theme = createTheme({
   typography: {
     fontSize: 16,
     h1: {
+      fontFamily: '"Oswald","Arial",sans-serif',
       fontSize: "6rem", //48px
       lineHeight: "1.3",
       fontWeight: 700, //Regular
@@ -38,12 +43,14 @@ const theme = createTheme({
       textTransform: "capitalize",
     },
     h2: {
+      fontFamily: '"Oswald","Arial",sans-serif',
       fontSize: "4rem", //40px
-      fontWeight: 400, //Regular
+      fontWeight: 500, //Regular
       color: "#9b9b9b",
       textTransform: "capitalize",
     },
     h3: {
+      fontFamily: '"Oswald","Arial",sans-serif',
       fontSize: "3rem", //32px
       lineHeight: "1.3",
       fontWeight: 500, //Regular
@@ -51,23 +58,27 @@ const theme = createTheme({
       textTransform: "capitalize",
     },
     h4: {
+      fontFamily: '"Oswald","Arial",sans-serif',
       fontSize: "1.5rem", //20px
       fontWeight: 400, //Regular
       color: "#252525",
       textTransform: "capitalize",
     },
     h5: {
+      fontFamily: '"Oswald","Arial",sans-serif',
       fontSize: "1rem", //16px
       fontWeight: 500, //Regular
       color: "#252525",
       textTransform: "capitalize",
     },
     body1: {
+      fontFamily: '"Montserrat","Arial",sans-serif',
       fontSize: "1rem", //16px
       fontWeight: 400, //Regular
       color: "#252525",
     },
     button: {
+      fontFamily: '"Montserrat","Arial",sans-serif',
       fontSize: "1rem", //24px
       fontWeight: 400, //Regular
       color: "#252525",

@@ -10,6 +10,7 @@ import {
 import { getUserInfo } from "../loginPage/logInPageSlice";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
+import { Typography } from "@mui/material";
 
 function CategoryPage() {
   const category = useLocation().pathname.replaceAll("/Dashboard/", "");
@@ -18,8 +19,6 @@ function CategoryPage() {
   const [currentCategory, setCurrentCategory] = useState("");
   const products = useSelector(getProducts);
   // const loadingProducts = useSelector(getIsLoadingProducts);
-  console.log("products", products);
-  console.log("category", category);
   const navigateTo = useNavigate();
 
   useEffect(() => {
@@ -30,54 +29,58 @@ function CategoryPage() {
   }, [currentCategory, dispatch, userInfo, category]);
 
   const handleRowClick = (params, event, details) => {
-    console.log(params);
     const productId = params.id;
-    navigateTo(`/Dashboard/${category}/${productId}`,{ state: { id: productId } });
+    navigateTo(`/Dashboard/${category}/${productId}`, {
+      state: { id: productId },
+    });
   };
 
   const columns = [
     {
       field: "thumbnail",
       headerName: "Thumbnail",
-      headerAlign: 'center',
+      headerAlign: "center",
       type: "image",
       filterable: false,
       sortable: false,
-      renderCell: (params) => <img width="50" src={params.value} alt="logo"/>,
-      align: "center"
+      minWidth: "100",
+      renderCell: (params) => <img width="100" src={params.value} alt="logo" />,
+      align: "center",
+      disableColumnMenu: true,
     },
     {
       field: "title",
       headerName: "Product",
-      headerAlign: 'center',
+      headerAlign: "center",
       filterable: true,
       minWidth: "200",
     },
     {
       field: "brand",
       headerName: "Brand",
-      headerAlign: 'center',
+      headerAlign: "center",
       filterable: true,
       minWidth: "200",
-      align: "center"
     },
     {
       field: "price",
       headerName: "Price",
-      headerAlign: 'center',
+      headerAlign: "center",
       type: "number",
       filterable: true,
       minWidth: "20",
-      align: "center"
+      align: "center",
+      disableColumnMenu: true,
     },
     {
       field: "rating",
       headerName: "Rating",
-      headerAlign: 'center',
+      headerAlign: "center",
       type: "number",
       filterable: true,
       minWidth: "20",
-      align: "center"
+      align: "center",
+      disableColumnMenu: true,
     },
   ];
 
@@ -90,17 +93,17 @@ function CategoryPage() {
     rating: product.rating,
   }));
 
-  console.log('rows',rows);
-
   return (
     <div className="CategoryPage_Container">
       <div className="CategoryPage_Wrapper">
+        <Typography variant="h2">{category.replaceAll("-", " ")}</Typography>
         <Box sx={{ height: "fit-content", width: "100%" }}>
           <DataGrid
             rows={rows}
             columns={columns}
             hideFooter
             onRowClick={handleRowClick}
+            rowHeight={80}
           />
         </Box>
       </div>

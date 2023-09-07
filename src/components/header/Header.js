@@ -17,6 +17,8 @@ import {
   getAllCategories,
   getAllCategoriesLoaded,
 } from "../../routes/dashboard/dashBoardSlice";
+import { Person } from "@mui/icons-material";
+import { getUserInfo } from "../../routes/loginPage/logInPageSlice";
 
 function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -24,7 +26,7 @@ function Header() {
   const location = useLocation();
   const allCategoriesLoaded = useSelector(getAllCategoriesLoaded);
   const allCategories = useSelector(getAllCategories);
-  // console.log("location", location);
+  const username = useSelector(getUserInfo).username;
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -41,6 +43,10 @@ function Header() {
     navigateTo(`/`);
   };
 
+  const handleProfile = () => {
+    navigateTo(`/Profile/${username}`);
+  }
+
   return (
     <AppBar
       position="static"
@@ -56,17 +62,30 @@ function Header() {
           onClick={handleLogoClick}
         ></img>
         {location.pathname !== "/" && (
-          <IconButton
-            size="large"
-            edge="end"
-            color="button"
-            aria-label="menu"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
-          >
-            <MenuIcon />
-          </IconButton>
+          <div>
+            <IconButton
+              size="large"
+              edge="end"
+              color="button"
+              aria-label="profile"
+              aria-controls="profile-appbar"
+              aria-haspopup="true"
+              onClick={handleProfile}
+            >
+              <Person />
+            </IconButton>
+            <IconButton
+              size="large"
+              edge="end"
+              color="button"
+              aria-label="menu"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+            >
+              <MenuIcon />
+            </IconButton>
+          </div>
         )}
         <Menu
           className="Menu"

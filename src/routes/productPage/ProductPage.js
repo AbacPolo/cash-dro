@@ -11,7 +11,6 @@ function ProductPage() {
   const { state } = useLocation();
   const { id } = state;
   const selectedProduct = products.filter((product) => product.id === id)[0];
-  console.log("selectedProduct", selectedProduct);
   const discountedPrice = (
     (selectedProduct.price * (100 - selectedProduct.discountPercentage)) /
     100
@@ -51,11 +50,11 @@ function ProductPage() {
         <div className="info_Container">
           <div className="rating_Container">
             {/* <Typography variant="h4">{selectedProduct.rating}</Typography> */}
-            {starsArray.map((star) => {
+            {starsArray.map((star, index) => {
               if (star) {
-                return <Star color="button" />;
+                return <Star color="button" key={index}/>;
               } else {
-                return <StarBorder color="button" />;
+                return <StarBorder color="button" key={index}/>;
               }
             })}
           </div>
