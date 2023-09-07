@@ -35,7 +35,7 @@ function Header() {
   const handleClose = (category) => {
     setAnchorEl(null);
     if (typeof category === "string") {
-      navigateTo(`/Dashboard/${category}`);
+      navigateTo(`/Categories/${category}`);
     }
   };
 

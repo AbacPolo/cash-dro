@@ -13,7 +13,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Typography } from "@mui/material";
 
 function CategoryPage() {
-  const category = useLocation().pathname.replaceAll("/Dashboard/", "");
+  const category = useLocation().pathname.replaceAll("/Categories/", "");
   const dispatch = useDispatch();
   const userInfo = useSelector(getUserInfo);
   const [currentCategory, setCurrentCategory] = useState("");
@@ -37,7 +37,7 @@ function CategoryPage() {
 
   const handleRowClick = (params, event, details) => {
     const productId = params.id;
-    navigateTo(`/Dashboard/${category}/${productId}`, {
+    navigateTo(`/Categories/${category}/${productId}`, {
       state: { id: productId },
     });
   };

@@ -27,7 +27,7 @@ function LogInPage() {
   const [showPassword, setShowPassword] = useState(false);
   const isLogedIn = useSelector(getIsLogedIn);
   const userInfo = useSelector(getUserInfo);
-  const navigate = useNavigate();
+  const navigateTo = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -38,9 +38,9 @@ function LogInPage() {
   useEffect(() => {
     if (isLogedIn === true) {
       dispatch(getUserProfile(userInfo));
-      navigate("/Dashboard");
+      navigateTo("/Categories");
     }
-  }, [userInfo, isLogedIn, navigate, dispatch]);
+  }, [userInfo, isLogedIn, navigateTo, dispatch]);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {

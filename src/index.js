@@ -23,9 +23,9 @@ root.render(
       <Routes>
         <Route exact path="/" element={<App />}>
           <Route exact path="/" element={<LogInPage />} />
-          <Route exact path="/Dashboard" element={<DashBoard />} />
-          <Route exact path="/Dashboard/:category" element={<CategoryPage />} />
-          <Route exact path="/Dashboard/:category/:productId" element={<ProductPage />} />
+          <Route exact path="/Categories" element={<DashBoard />} />
+          <Route exact path="/Categories/:category" element={<CategoryPage />} />
+          <Route exact path="/Categories/:category/:productId" element={<ProductPage />} />
           <Route exact path="/Profile/:username" element={<ProfilePage />} />
         </Route>
       </Routes>

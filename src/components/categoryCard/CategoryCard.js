@@ -8,7 +8,7 @@ function CategoryCard({ category }) {
   const navigateTo = useNavigate();
 
   const handleClick = (category) => {
-    navigateTo(`/Dashboard/${category}`);
+    navigateTo(`/Categories/${category}`);
   };
 
   return (
