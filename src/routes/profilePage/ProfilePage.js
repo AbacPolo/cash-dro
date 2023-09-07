@@ -53,7 +53,7 @@ function ProfilePage() {
   };
 
   return (
-    <Container className="ProfilePage_Container">
+    <Container maxWidth='sm' className="ProfilePage_Container">
       <div className="ProfilePage_Wrapper">
         <form
           onSubmit={handleSubmit}

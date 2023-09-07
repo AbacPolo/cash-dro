@@ -47,7 +47,7 @@ function DashBoard() {
         </Typography>
       </div>
 
-      <Container>
+      <Container maxWidth='lg'>
         <div className="DashBoard_Wrapper">
           {allCategoriesLoaded &&
             allCategories.map((category, index) => (
