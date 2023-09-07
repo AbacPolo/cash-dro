@@ -1,0 +1,30 @@
+.ProfilePage_Container {
+    width: 100%;
+    height: calc(100% - 56px);
+    margin: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  .ProfilePage_Wrapper {
+    width: 100%;
+    height: fit-content;
+    margin: 0;
+    box-sizing: border-box;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .profileForm_Content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .profileForm_Title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }

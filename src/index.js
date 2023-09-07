@@ -10,6 +10,7 @@ import DashBoard from "./routes/dashboard/DashBoard";
 import LogInPage from "./routes/loginPage/LogInPage";
 import CategoryPage from "./routes/categoryPage/CategoryPage";
 import ProductPage from "./routes/productPage/ProductPage";
+import ProfilePage from "./routes/profilePage/ProfilePage";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -25,6 +26,7 @@ root.render(
           <Route exact path="/Dashboard" element={<DashBoard />} />
           <Route exact path="/Dashboard/:category" element={<CategoryPage />} />
           <Route exact path="/Dashboard/:category/:productId" element={<ProductPage />} />
+          <Route exact path="/Profile/:username" element={<ProfilePage />} />
         </Route>
       </Routes>
     </Provider>
