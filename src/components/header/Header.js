@@ -95,8 +95,17 @@ function Header() {
           onClose={handleClose}
           marginThreshold={0}
           TransitionComponent={Fade}
-          anchorReference="anchorPosition"
-          anchorPosition={{ top: 56, left: 0 }}
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          // anchorReference="anchorPosition"
+          // anchorPosition={{ top: 56, left: 0 }}
         >
           {allCategoriesLoaded &&
             allCategories.map((category, index) => (

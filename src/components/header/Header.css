@@ -1,40 +1,51 @@
 .appBar {
-    height: 56px;
-    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+  height: 56px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.Header {
+  height: 100%;
+  min-height: auto;
+  justify-content: space-between;
+}
+
+.Banner_Logo {
+  width: 100px;
+  height: auto;
+  scale: 1;
+  transition: all 300ms;
+  z-index: 3;
+}
+
+.Banner_Logo:hover {
+  scale: 1.1;
+}
+
+.Menu {
+  z-index: 1;
+  & > .MuiMenu-paper {
+    padding: 0 16px;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
   }
-  
-  .Header {
-    height: 100%;
-    min-height: auto;
-    justify-content: space-between;
+
+  & > .MuiMenu-paper > .MuiList-root > li {
+    border-radius: 6px;
   }
-  
-  .Banner_Logo {
-    width: 100px;
-    height: auto;
-    scale: 1;
-    transition: all 300ms;
-    z-index: 3;
-  }
-  
-  .Banner_Logo:hover {
-    scale: 1.1;
-  }
-  
+}
+
+@media only screen and (max-width: 904px) {
   .Menu {
-    z-index: 1;
     & > .MuiMenu-paper {
       width: 100%;
       max-width: 100%;
       max-height: 40%;
       background-color: #fff;
-      padding: 16px;
-      box-sizing: border-box;
       border-radius: 0;
       z-index: 1;
-      box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.1);
+      padding: 16px;
     }
-  
+
     & > .MuiMenu-paper > .MuiList-root {
       display: flex;
       gap: 16px;
@@ -44,12 +55,10 @@
       max-width: 100%;
       padding: 0;
     }
-  
+
     & > .MuiMenu-paper > .MuiList-root > li {
       width: 100%;
-      border-radius: 6px;
-      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
     }
   }
-
-  
+}
