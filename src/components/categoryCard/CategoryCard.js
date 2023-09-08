@@ -15,7 +15,6 @@ function CategoryCard({ category }) {
     <Button
       variant="contained"
       color="button"
-      className="CategoryCard_Container"
       onClick={() => handleClick(category)}
     >
       <div className="CategoryCard_Wrapper">

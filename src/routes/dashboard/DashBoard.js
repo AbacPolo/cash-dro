@@ -10,7 +10,7 @@ import { getIsLogedIn, getUserInfo } from "../loginPage/logInPageSlice";
 import { useNavigate } from "react-router";
 import CategoryCard from "../../components/categoryCard/CategoryCard";
 import bannerImage from "../../images/pexels-ksenia-chernaya.jpg";
-import { Container, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 
 function DashBoard() {
   const dispatch = useDispatch();
@@ -47,12 +47,16 @@ function DashBoard() {
         </Typography>
       </div>
 
-      <Container maxWidth='lg'>
+      <Container maxWidth="lg">
         <div className="DashBoard_Wrapper">
-          {allCategoriesLoaded &&
-            allCategories.map((category, index) => (
-              <CategoryCard key={index} category={category} />
-            ))}
+          <Grid container spacing={2}>
+            {allCategoriesLoaded &&
+              allCategories.map((category, index) => (
+                <Grid key={index} item xs={6} sm={4} md={2}>
+                  <CategoryCard category={category} />
+                </Grid>
+              ))}
+          </Grid>
         </div>
       </Container>
     </div>
