@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import {
   getIsLogedIn,
+  getLogInHasError,
   getUserInfo,
   getUserProfile,
   logInAuth,
@@ -27,6 +28,7 @@ function LogInPage() {
   const [passwordValue, setPasswordValue] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const isLogedIn = useSelector(getIsLogedIn);
+  const logInHasError = useSelector(getLogInHasError);
   const userInfo = useSelector(getUserInfo);
   const navigateTo = useNavigate();
   const dispatch = useDispatch();
@@ -65,6 +67,7 @@ function LogInPage() {
               required
               label="Username"
               color="button"
+              error={logInHasError}
             />
           </FormControl>
           <FormControl fullWidth>
@@ -90,6 +93,7 @@ function LogInPage() {
               }
               label="Password"
               color="button"
+              error={logInHasError}
             />
           </FormControl>
           <Button

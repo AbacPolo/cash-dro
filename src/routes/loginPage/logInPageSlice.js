@@ -1,10 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const logInAuth = createAsyncThunk(
-  "logInPage/logInAuth",
+  "logIn/logInAuth",
   async ({ usernameValue, passwordValue }) => {
-    // console.log("usernameValue", usernameValue);
-    // console.log("passwordValue", passwordValue);
     const response = await fetch("https://dummyjson.com/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -13,13 +11,17 @@ export const logInAuth = createAsyncThunk(
         password: passwordValue,
       }),
     });
-    const userInfo = await response.json();
-    return userInfo;
+    if (response.status === 200) {
+      const userInfo = await response.json();
+      return userInfo;
+    } else {
+      throw new Error();
+    }
   }
 );
 
 export const getUserProfile = createAsyncThunk(
-  "logInPage/getUserProfile",
+  "logIn/getUserProfile",
   async (data) => {
     const response = await fetch(
       `https://dummyjson.com/auth/users/${data.id}`,
@@ -31,8 +33,12 @@ export const getUserProfile = createAsyncThunk(
         },
       }
     );
-    const userProfile = await response.json();
-    return userProfile;
+    if (response.status === 200) {
+      const userProfile = await response.json();
+      return userProfile;
+    } else {
+      throw new Error();
+    }
   }
 );
 
@@ -50,24 +56,24 @@ export const logInPageSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(logInAuth.pending, (state) => {
+      .addCase(logInAuth.pending, (state, action) => {
         state.isLogedIn = false;
         state.isLogingIn = true;
-        state.loadingResultsHasError = false;
+        state.logInHasError = false;
       })
       .addCase(logInAuth.fulfilled, (state, action) => {
         state.isLogedIn = true;
         state.isLogingIn = false;
-        state.loadingResultsHasError = false;
+        state.logInHasError = false;
         state.userInfo = action.payload;
       })
-      .addCase(logInAuth.rejected, (state) => {
+      .addCase(logInAuth.rejected, (state, action) => {
         state.isLogedIn = false;
         state.isLogingIn = false;
-        state.loadingResultsHasError = true;
+        state.logInHasError = true;
         state.diceResults = {};
       })
-      .addCase(getUserProfile.pending, (state) => {
+      .addCase(getUserProfile.pending, (state, action) => {
         state.isLoadingProfile = true;
         state.loadingProfileHasError = false;
       })
@@ -76,7 +82,7 @@ export const logInPageSlice = createSlice({
         state.loadingProfileHasError = false;
         state.userProfile = action.payload;
       })
-      .addCase(getUserProfile.rejected, (state) => {
+      .addCase(getUserProfile.rejected, (state, action) => {
         state.isLoadingProfile = false;
         state.loadingProfileHasError = true;
         state.userProfile = {};
