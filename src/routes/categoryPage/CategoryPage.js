@@ -3,11 +3,12 @@ import "./CategoryPage.css";
 import { useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  fetchProductsStorage,
   // getIsLoadingProducts,
   getProducts,
   getProductsInCategory,
 } from "./categoryPageSlice";
-import { getIsLogedIn, getUserInfo } from "../loginPage/logInPageSlice";
+import { fetchLogInStorage, getIsLogedIn, getUserInfo } from "../loginPage/logInPageSlice";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { Container, Typography } from "@mui/material";
@@ -23,17 +24,27 @@ function CategoryPage() {
   const isLogedIn = useSelector(getIsLogedIn);
 
   useEffect(() => {
-    if (isLogedIn === false) {
+    const previousLogIn = sessionStorage.getItem("isLogedIn")
+      ? JSON.parse(sessionStorage.getItem("isLogedIn"))
+      : undefined;
+    if (isLogedIn === false && previousLogIn === undefined) {
       navigateTo("/");
+    } else if (isLogedIn === false && previousLogIn === true) {
+      dispatch(fetchLogInStorage());
     }
-  }, [isLogedIn, navigateTo]);
+  }, [isLogedIn, navigateTo, dispatch]);
 
   useEffect(() => {
-    if (currentCategory !== category) {
-      dispatch(getProductsInCategory({ userInfo, category }));
-      setCurrentCategory(category);
-    }
-  }, [currentCategory, dispatch, userInfo, category]);
+    const previousProducts = sessionStorage.getItem(category)
+      ? JSON.parse(sessionStorage.getItem(category))
+      : undefined;
+      if (currentCategory !== category && previousProducts === undefined) {
+       dispatch(getProductsInCategory({ userInfo, category }));
+       setCurrentCategory(category);
+      } else if (previousProducts) {
+        dispatch(fetchProductsStorage(category));
+      }
+    }, [currentCategory, dispatch, userInfo, category]);
 
   const handleRowClick = (params, event, details) => {
     const productId = params.id;

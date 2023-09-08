@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./DashBoard.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  fetchAllCategoriesStorage,
   getAllCategories,
   getAllCategoriesLoaded,
   getCategories,
@@ -25,17 +26,28 @@ function DashBoard() {
   const allCategories = useSelector(getAllCategories);
 
   useEffect(() => {
-    const previousLogIn = JSON.parse(sessionStorage.isLogedIn);
+    const previousLogIn = sessionStorage.getItem("isLogedIn")
+      ? JSON.parse(sessionStorage.getItem("isLogedIn"))
+      : undefined;
     if (isLogedIn === false && previousLogIn === undefined) {
       navigateTo("/");
-    } else if (previousLogIn === true) {
+    } else if (isLogedIn === false && previousLogIn === true) {
       dispatch(fetchLogInStorage());
     }
   }, [isLogedIn, navigateTo, dispatch]);
 
   useEffect(() => {
-    if (!allCategoriesLoaded && isLogedIn === true) {
+    const previousCategories = sessionStorage.getItem("allCategoriesLoaded")
+      ? JSON.parse(sessionStorage.getItem("allCategoriesLoaded"))
+      : undefined;
+    if (
+      !allCategoriesLoaded &&
+      isLogedIn === true &&
+      previousCategories === undefined
+    ) {
       dispatch(getCategories(userInfo));
+    } else if (allCategoriesLoaded === false && previousCategories === true) {
+      dispatch(fetchAllCategoriesStorage());
     }
   }, [allCategoriesLoaded, userInfo, isLogedIn, dispatch]);
 

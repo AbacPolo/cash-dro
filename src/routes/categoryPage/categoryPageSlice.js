@@ -29,7 +29,11 @@ export const categoryPageSlice = createSlice({
     isLoadingProducts: false,
     loadingProductsHasError: false,
   },
-  reducers: {},
+  reducers: {
+    fetchProductsStorage: (state, action) => {
+      state.products = JSON.parse(sessionStorage.getItem(action.payload));
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getProductsInCategory.pending, (state) => {
@@ -41,6 +45,10 @@ export const categoryPageSlice = createSlice({
         state.isLoadingProducts = false;
         state.loadingProductsHasError = false;
         state.products = action.payload.products;
+        sessionStorage.setItem(
+          action.payload.products[0].category,
+          JSON.stringify(action.payload.products)
+        );
       })
       .addCase(getProductsInCategory.rejected, (state) => {
         state.isLoadingProducts = false;
@@ -54,4 +62,5 @@ export const getProducts = (state) => state.category.products;
 export const getIsLoadingProducts = (state) => state.category.isLoadingProducts;
 export const getLoadingProductsHasError = (state) =>
   state.category.loadingProductsHasError;
+export const { fetchProductsStorage } = categoryPageSlice.actions;
 export default categoryPageSlice.reducer;

@@ -30,7 +30,12 @@ export const dashBoardSlice = createSlice({
     isLoadingCategories: false,
     loadingCategoriesHasError: false,
   },
-  reducers: {},
+  reducers: {
+    fetchAllCategoriesStorage: (state, action) => {
+      state.allCategories = JSON.parse(sessionStorage.getItem("allCategories"));
+      state.allCategoriesLoaded = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getCategories.pending, (state) => {
@@ -42,7 +47,9 @@ export const dashBoardSlice = createSlice({
         state.isLoadingCategories = false;
         state.loadingCategoriesHasError = false;
         state.allCategoriesLoaded = true;
+        sessionStorage.setItem("allCategoriesLoaded", "true");
         state.allCategories = action.payload;
+        sessionStorage.setItem("allCategories", JSON.stringify(action.payload));
       })
       .addCase(getCategories.rejected, (state) => {
         state.isLoadingCategories = false;
@@ -57,4 +64,5 @@ export const getAllCategories = (state) => state.dashboard.allCategories;
 export const getAllCategoriesLoaded = (state) => state.dashboard.allCategoriesLoaded;
 export const getIsLoadingCategories = (state) => state.dashboard.isLoadingCategories;
 export const getLoadingCategoriesHasError = (state) => state.dashboard.loadingCategoriesHasError;
+export const { fetchAllCategoriesStorage } = dashBoardSlice.actions;
 export default dashBoardSlice.reducer;

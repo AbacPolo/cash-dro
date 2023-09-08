@@ -16,6 +16,7 @@ import {
 import {
   getIsLogedIn,
   getLogInHasError,
+  getProfileLoaded,
   getUserInfo,
   getUserProfile,
   logInAuth,
@@ -31,6 +32,7 @@ function LogInPage() {
   const isLogedIn = useSelector(getIsLogedIn);
   const logInHasError = useSelector(getLogInHasError);
   const userInfo = useSelector(getUserInfo);
+  const profileLoaded = useSelector(getProfileLoaded);
   const navigateTo = useNavigate();
   const dispatch = useDispatch();
 
@@ -40,11 +42,11 @@ function LogInPage() {
   };
 
   useEffect(() => {
-    if (isLogedIn === true) {
+    if (isLogedIn === true && profileLoaded === false) {
       dispatch(getUserProfile(userInfo));
       navigateTo("/Categories");
     }
-  }, [userInfo, isLogedIn, navigateTo, dispatch]);
+  }, [userInfo, isLogedIn, profileLoaded, navigateTo, dispatch]);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
