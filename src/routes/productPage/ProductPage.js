@@ -23,66 +23,70 @@ function ProductPage() {
     .fill(0)
     .fill(1, 0, Math.floor(selectedProduct.rating));
 
-    useEffect(() => {
-      if (isLogedIn === false) {
-        navigateTo("/");
-      }
-    }, [ isLogedIn, navigateTo]);
+  useEffect(() => {
+    if (isLogedIn === false) {
+      navigateTo("/");
+    }
+  }, [isLogedIn, navigateTo]);
 
   return (
-    <Container className="ProductPage_Container">
-      <div className="ProductPage_Wrapper">
-        <div className="title_Container">
-          <Typography variant="h2">{selectedProduct.title}</Typography>
-          <Typography variant="h4">{selectedProduct.brand}</Typography>
-        </div>
-        <div className="price_Container">
-          <Typography variant="h3" sx={{ fontWeight: 700 }}>
-            {discountedPrice}€
-          </Typography>
-          <Typography variant="h4" sx={{ color: "#9b9b9b" }}>
-            {selectedProduct.price}€
-          </Typography>
-          <Typography
-            variant="h5"
-            color="secondary"
-            sx={{
-              bgcolor: "#cc9f6b",
-              height: "fit-content",
-              borderRadius: "4px",
-              padding: "2px 5px",
-            }}
-          >
-            -{selectedProduct.discountPercentage}%
-          </Typography>
-        </div>
-        <div className="info_Container">
-          <div className="rating_Container">
-            {/* <Typography variant="h4">{selectedProduct.rating}</Typography> */}
-            {starsArray.map((star, index) => {
-              if (star) {
-                return <Star color="button" key={index} />;
-              } else {
-                return <StarBorder color="button" key={index} />;
-              }
-            })}
+    <div className="ProductPage_Root">
+      <Container>
+        <div className="ProductPage_Wrapper">
+          <div className="title_Container">
+            <Typography variant="h2">{selectedProduct.title}</Typography>
+            <Typography variant="h4">{selectedProduct.brand}</Typography>
           </div>
-          <div className="rating_Container">
-            <Sell />
-            <Typography variant="h4">{selectedProduct.stock}</Typography>
+          <div className="price_Container">
+            <Typography variant="h3" sx={{ fontWeight: 700 }}>
+              {discountedPrice}€
+            </Typography>
+            <Typography variant="h4" sx={{ color: "#9b9b9b" }}>
+              {selectedProduct.price}€
+            </Typography>
+            <Typography
+              variant="h5"
+              color="secondary"
+              sx={{
+                bgcolor: "#cc9f6b",
+                height: "fit-content",
+                borderRadius: "4px",
+                padding: "2px 5px",
+              }}
+            >
+              -{selectedProduct.discountPercentage}%
+            </Typography>
+          </div>
+          <div className="info_Container">
+            <div className="rating_Container">
+              {/* <Typography variant="h4">{selectedProduct.rating}</Typography> */}
+              {starsArray.map((star, index) => {
+                if (star) {
+                  return <Star color="button" key={index} />;
+                } else {
+                  return <StarBorder color="button" key={index} />;
+                }
+              })}
+            </div>
+            <div className="rating_Container">
+              <Sell />
+              <Typography variant="h4">{selectedProduct.stock}</Typography>
+            </div>
+          </div>
+          <img
+            src={selectedProduct.images[1]}
+            alt="Product"
+            className="product_Image"
+          />
+          <div className="description_Container">
+            <Typography variant="h4">Characteristics</Typography>
+            <Typography variant="body1">
+              {selectedProduct.description}
+            </Typography>
           </div>
         </div>
-        <img
-          src={selectedProduct.images[1]}
-          alt="Product"
-          className="product_Image"
-        />
-        <div className="description_Container">
-          <Typography variant="h4">Characteristics</Typography>
-          <Typography variant="body1">{selectedProduct.description}</Typography>
-        </div>
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 }
 

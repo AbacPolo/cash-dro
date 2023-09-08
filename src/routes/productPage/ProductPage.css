@@ -1,4 +1,4 @@
-.ProductPage_Container {
+.ProductPage_Root {
   height: calc(100% - 56px);
   overflow-y: auto;
 }
