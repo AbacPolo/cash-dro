@@ -82,7 +82,6 @@ function CategoryPage() {
     {
       field: "price",
       headerName: "Price",
-      type: "number",
       filterable: true,
       align: "center",
       disableColumnMenu: true,
