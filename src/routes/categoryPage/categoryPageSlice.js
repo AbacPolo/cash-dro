@@ -2,19 +2,23 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getProductsInCategory = createAsyncThunk(
   "categoryPage/getProducts",
-  async ({userInfo, category}) => {
-     const response = await fetch(
-       `https://dummyjson.com/products/category/${category}`,
-       {
-         method: "GET",
-         headers: {
-           "Content-Type": "application/json",
-           Authorization: `${userInfo.token}`,
-         },
-       }
-     );
-     const products = await response.json();
-     return products;
+  async ({ userInfo, category }) => {
+    const response = await fetch(
+      `https://dummyjson.com/products/category/${category}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${userInfo.token}`,
+        },
+      }
+    );
+    if (response.status === 200) {
+      const products = await response.json();
+      return products;
+    } else {
+      throw new Error();
+    }
   }
 );
 
@@ -48,5 +52,6 @@ export const categoryPageSlice = createSlice({
 
 export const getProducts = (state) => state.category.products;
 export const getIsLoadingProducts = (state) => state.category.isLoadingProducts;
-export const getLoadingProductsHasError = (state) => state.category.loadingProductsHasError;
+export const getLoadingProductsHasError = (state) =>
+  state.category.loadingProductsHasError;
 export default categoryPageSlice.reducer;

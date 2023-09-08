@@ -14,8 +14,12 @@ export const updateProfileInfo = createAsyncThunk(
         body: JSON.stringify(updateInfo),
       }
     );
-    const products = await response.json();
-    return products;
+    if (response.status === 200) {
+      const products = await response.json();
+      return products;
+    } else {
+      throw new Error();
+    }
   }
 );
 
@@ -46,8 +50,10 @@ export const profilePageSlice = createSlice({
   },
 });
 
-export const getUpdatedProfileInfo = (state) => state.profile.updatedProfileInfo;
-export const getIsLoadingUpdateProfile = (state) => state.profile.isLoadingUpdateProfile;
+export const getUpdatedProfileInfo = (state) =>
+  state.profile.updatedProfileInfo;
+export const getIsLoadingUpdateProfile = (state) =>
+  state.profile.isLoadingUpdateProfile;
 export const getloadingUpdateProfileHasError = (state) =>
   state.profile.loadingUpdateProfileHasError;
 export default profilePageSlice.reducer;

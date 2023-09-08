@@ -13,8 +13,12 @@ export const getCategories = createAsyncThunk(
         },
       }
     );
-    const categories = await response.json();
-    return categories;
+    if (response.status === 200) {
+      const categories = await response.json();
+      return categories;
+    } else {
+      throw new Error();
+    }
   }
 );
 
