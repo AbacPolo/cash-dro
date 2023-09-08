@@ -53,7 +53,13 @@ export const logInPageSlice = createSlice({
     isLoadingProfile: false,
     loadingProfileHasError: false,
   },
-  reducers: {},
+  reducers: {
+    fetchLogInStorage: (state, action) => {
+      state.userInfo = JSON.parse(sessionStorage.userInfo);
+      state.userProfile = JSON.parse(sessionStorage.userProfile);
+      state.isLogedIn = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(logInAuth.pending, (state, action) => {
@@ -63,9 +69,11 @@ export const logInPageSlice = createSlice({
       })
       .addCase(logInAuth.fulfilled, (state, action) => {
         state.isLogedIn = true;
+        sessionStorage.setItem("isLogedIn", "true");
         state.isLogingIn = false;
         state.logInHasError = false;
         state.userInfo = action.payload;
+        sessionStorage.setItem("userInfo", JSON.stringify(action.payload));
       })
       .addCase(logInAuth.rejected, (state, action) => {
         state.isLogedIn = false;
@@ -81,6 +89,7 @@ export const logInPageSlice = createSlice({
         state.isLoadingProfile = false;
         state.loadingProfileHasError = false;
         state.userProfile = action.payload;
+        sessionStorage.setItem("userProfile", JSON.stringify(action.payload));
       })
       .addCase(getUserProfile.rejected, (state, action) => {
         state.isLoadingProfile = false;
@@ -95,4 +104,5 @@ export const getIsLogedIn = (state) => state.logIn.isLogedIn;
 export const getIsLogingIn = (state) => state.logIn.isLogingIn;
 export const getLogInHasError = (state) => state.logIn.logInHasError;
 export const getUserProfileInfo = (state) => state.logIn.userProfile;
+export const { fetchLogInStorage } = logInPageSlice.actions;
 export default logInPageSlice.reducer;

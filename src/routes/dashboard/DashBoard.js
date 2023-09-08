@@ -6,7 +6,11 @@ import {
   getAllCategoriesLoaded,
   getCategories,
 } from "./dashBoardSlice";
-import { getIsLogedIn, getUserInfo } from "../loginPage/logInPageSlice";
+import {
+  fetchLogInStorage,
+  getIsLogedIn,
+  getUserInfo,
+} from "../loginPage/logInPageSlice";
 import { useNavigate } from "react-router";
 import CategoryCard from "../../components/categoryCard/CategoryCard";
 import bannerImage from "../../images/pexels-ksenia-chernaya.jpg";
@@ -21,10 +25,13 @@ function DashBoard() {
   const allCategories = useSelector(getAllCategories);
 
   useEffect(() => {
-    if (isLogedIn === false) {
+    const previousLogIn = JSON.parse(sessionStorage.isLogedIn);
+    if (isLogedIn === false && previousLogIn === undefined) {
       navigateTo("/");
+    } else if (previousLogIn === true) {
+      dispatch(fetchLogInStorage());
     }
-  }, [isLogedIn, navigateTo]);
+  }, [isLogedIn, navigateTo, dispatch]);
 
   useEffect(() => {
     if (!allCategoriesLoaded && isLogedIn === true) {
