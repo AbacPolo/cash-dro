@@ -4,6 +4,7 @@ import {
   Button,
   Container,
   FormControl,
+  FormHelperText,
   FormLabel,
   IconButton,
   Input,
@@ -69,6 +70,7 @@ function LogInPage() {
               color="button"
               error={logInHasError}
             />
+            {logInHasError && <FormHelperText error>Invalid Credentials</FormHelperText>}
           </FormControl>
           <FormControl fullWidth>
             <InputLabel htmlFor="input-Password">Password</InputLabel>
@@ -95,6 +97,7 @@ function LogInPage() {
               color="button"
               error={logInHasError}
             />
+            {logInHasError && <FormHelperText error>Invalid Credentials</FormHelperText>}
           </FormControl>
           <Button
             variant="contained"
