@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProductsStorage,
-  // getIsLoadingProducts,
   getProducts,
   getProductsInCategory,
 } from "./categoryPageSlice";
@@ -19,7 +18,7 @@ function CategoryPage() {
   const userInfo = useSelector(getUserInfo);
   const [currentCategory, setCurrentCategory] = useState("");
   const products = useSelector(getProducts);
-  // const loadingProducts = useSelector(getIsLoadingProducts);
+
   const navigateTo = useNavigate();
   const isLogedIn = useSelector(getIsLogedIn);
 

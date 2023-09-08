@@ -51,8 +51,7 @@ function Header() {
     <AppBar
       position="static"
       color="secondary"
-      // elevation={0}
-      className="appBar"
+      className="AppBar"
     >
       <Toolbar className="Header">
         <img
@@ -104,8 +103,6 @@ function Header() {
             vertical: 'top',
             horizontal: 'right',
           }}
-          // anchorReference="anchorPosition"
-          // anchorPosition={{ top: 56, left: 0 }}
         >
           {allCategoriesLoaded &&
             allCategories.map((category, index) => (

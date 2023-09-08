@@ -14,13 +14,13 @@
     padding-right: 16px;
   }
 
-  .profileForm_Content {
+  .ProfileForm_Content {
     display: flex;
     flex-direction: column;
     gap: 30px;
   }
 
-  .profileForm_Title {
+  .ProfileForm_Title {
     display: flex;
     align-items: center;
     gap: 6px;

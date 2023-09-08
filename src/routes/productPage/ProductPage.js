@@ -41,15 +41,15 @@ function ProductPage() {
             <img
               src={selectedProduct.images[0]}
               alt="Product"
-              className="product_Image"
+              className="Product_Image"
             />
           </Grid>
-          <Grid item xs={12} sm={6} className="gridItem_Information">
-            <div className="title_Container">
+          <Grid item xs={12} sm={6} className="GridItem_Information">
+            <div className="Title_Container">
               <Typography variant="h2">{selectedProduct.title}</Typography>
               <Typography variant="h4">{selectedProduct.brand}</Typography>
             </div>
-            <div className="price_Container">
+            <div className="Price_Container">
               <Typography variant="h3" sx={{ fontWeight: 700 }}>
                 {discountedPrice}€
               </Typography>
@@ -72,8 +72,8 @@ function ProductPage() {
                 -{selectedProduct.discountPercentage}%
               </Typography>
             </div>
-            <div className="details_Container">
-              <div className="rating_Container">
+            <div className="Details_Container">
+              <div className="Rating_Container">
                 {starsArray.map((star, index) => {
                   if (star) {
                     return <Star color="button" key={index} />;
@@ -82,12 +82,12 @@ function ProductPage() {
                   }
                 })}
               </div>
-              <div className="rating_Container">
+              <div className="Rating_Container">
                 <Sell />
                 <Typography variant="h4">{selectedProduct.stock}</Typography>
               </div>
             </div>
-            <div className="description_Container">
+            <div className="Description_Container">
               <Typography variant="h4">Characteristics</Typography>
               <Typography variant="body1">
                 {selectedProduct.description}

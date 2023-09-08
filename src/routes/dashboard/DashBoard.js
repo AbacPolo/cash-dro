@@ -53,11 +53,11 @@ function DashBoard() {
 
   return (
     <div className="DashBoard_Root">
-      <div className="banner_Container">
-        <img src={bannerImage} alt="banner_Image" className="banner_Image" />
+      <div className="Banner_Container">
+        <img src={bannerImage} alt="banner_Image" className="Banner_Image" />
         <Typography
           variant="h1"
-          className="banner_Title"
+          className="Banner_Title"
           position={"absolute"}
           top={0}
           left={0}

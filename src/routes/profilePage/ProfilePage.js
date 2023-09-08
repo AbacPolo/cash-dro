@@ -56,9 +56,9 @@ function ProfilePage() {
       <div className="ProfilePage_Wrapper">
         <form
           onSubmit={handleSubmit}
-          className="Form_Content profileForm_Content"
+          className="Form_Content ProfileForm_Content"
         >
-          <FormLabel className="profileForm_Title">
+          <FormLabel className="ProfileForm_Title">
             <Typography variant="h2">Profile</Typography>
             <IconButton
               color="button"

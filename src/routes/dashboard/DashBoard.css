@@ -11,7 +11,7 @@
   padding: 32px 0;
 }
 
-.banner_Container {
+.Banner_Container {
   width: 100%;
   max-height: 35vh;
   position: relative;
@@ -22,7 +22,7 @@
   align-items: center;
 }
 
-.banner_Title {
+.Banner_Title {
   height: 100%;
   width: 100%;
   display: flex;
@@ -32,6 +32,6 @@
   background-color: rgb(0, 0, 0,0.5);
 }
 
-.banner_Image {
+.Banner_Image {
   width: 100%;
 }
