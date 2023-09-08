@@ -40,7 +40,7 @@ function Header() {
   };
 
   const handleLogoClick = () => {
-    navigateTo(`/`);
+    navigateTo(`/Categories`);
   };
 
   const handleProfile = () => {
