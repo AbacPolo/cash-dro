@@ -29,14 +29,12 @@ function ProductPage() {
     }
   }, [isLogedIn, navigateTo]);
 
-  console.log('selectedProduct',selectedProduct);
-
   return (
     <div className="ProductPage_Root">
       <Container>
         <Grid
           container
-          spacing={{ xs: 3, md: 6 }}
+          spacing={{ xs: 3, sm: 6 }}
           className="ProductPage_Wrapper"
         >
           <Grid item xs={12} sm={6}>
